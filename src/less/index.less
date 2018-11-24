@@ -1,4 +1,18 @@
 @import "reset";
+
+.common-title{
+  color:#009ee0;
+  font-size:80px;
+  line-height:0.8;
+  font-weight:bold;
+  letter-spacing:-5px;
+}
+.commonText{
+  color:white;
+  line-height:1.5;
+  font-size:15px;
+}
+
 #wrap{
   position: relative;
   height: 100%;
@@ -62,7 +76,6 @@
     left: 0;
     right: 0;
     overflow: hidden;
-    background-color: grey;
     >ul{
       position: absolute;
       top: 0;
@@ -75,6 +88,22 @@
         position: relative;
         width: 100%;
         height: 20%;
+        background-repeat: no-repeat;
+        &:nth-child(1){
+          background-image: url("../images/bg1.jpg");
+        }
+        &:nth-child(2){
+          background-image: url("../images/bg2.jpg");
+        }
+        &:nth-child(3){
+          background-image: url("../images/bg3.jpg");
+        }
+        &:nth-child(4){
+          background-image: url("../images/bg4.jpg");
+        }
+        &:nth-child(5){
+          background-image: url("../images/bg5.jpg");
+        }
         >section{
           position: absolute;
           width: 1150px;
@@ -82,9 +111,187 @@
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
-          background-color: deepskyblue;
+          //background-color: deepskyblue;
+          &.home{
+            position: relative;
+            //轮播图
+            .home-carousel{
+              position: relative;
+              width: 100%;
+              height: 100%;
+              transform-style: preserve-3d;
+              perspective: 1000px;
+              li{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 520px;
+                color: #fff;
+                visibility: hidden;
+                &.show{
+                  visibility: visible;
+                }
+                &:nth-child(1){
+                  background:#dc6c5f;
+                }
+                &:nth-child(2){
+                  background:#95dc84;
+                }
+                &:nth-child(3){
+                  background:#64b9d2;
+                }
+                &:nth-child(4){
+                  background:#000000;
+                }
+                &.rightShow{
+                  visibility: visible;
+                  animation: rightShow 2s linear;
+                }
+                &.leftHide{
+                  visibility: hidden;
+                  animation: leftHide 2s linear;
+                }
+                &.leftShow{
+                  visibility: visible;
+                  animation: leftShow 2s linear;
+                }
+                &.rightHide{
+                  visibility: hidden;
+                  animation: rightHide 2s linear;
+                }
+              }
+            }
+            //小圆点
+            .home-point{
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translate(-50%);
+              li{
+                float: left;
+                width: 20px;
+                height: 20px;
+                background-color: rgba(255,255,255,0.5);
+                margin: 2px;
+                box-shadow: 0 0 4px rgba(25,25,25,0.8);
+                border-radius: 50%;
+                &.active{
+                  background-color: #fff;
+                }
+              }
+            }
+
+          }
+          &.course{
+            h2{
+              margin: 50px;
+            }
+            >p{
+              width: 400px;
+              margin-left: 50px;
+            }
+            .course-photo{
+              position: absolute;
+              top: 70px;
+              right: 50px;
+              width: 480px;
+              li{
+                position: relative;
+                float: left;
+                width: 120px;
+                height: 132px;
+                img{
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  right: 0;
+                  bottom: 0;
+                  margin: auto;
+                  transition: transform 2s;
+                }
+                p{
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  box-sizing: border-box;
+                  background-color: #009ee0;
+                  padding: 15px;
+                  transform: rotateY(180deg);
+                  backface-visibility: hidden;
+                  transition: transform 2s;
+                }
+                &:hover{
+                  p{
+                    transform: rotateY(0deg);
+                  }
+                  img{
+                    transform: rotateY(180deg);
+                  }
+                }
+              }
+
+            }
+            .course-line{
+              position: absolute;
+              top: 62px;
+              right: 0;
+              width: 9px;
+              height: 410px;
+              background-image: url("../images/plus_row.png");
+              &:nth-last-of-type(1){
+                right: 45px;
+              }
+              &:nth-last-of-type(2){
+                right: 165px;
+              }
+              &:nth-last-of-type(3){
+                right: 285px;
+              }
+              &:nth-last-of-type(4){
+                right: 405px;
+              }
+              &:nth-last-of-type(5){
+                right: 525px;
+              }
+            }
+          }
         }
       }
     }
   }
+}
+
+
+//第一屏的动画
+/*
+  点击右边小圆点：
+    左边：向左位移，旋转-30deg，从前面到后面，从显示到隐藏
+    右边：向右位移，旋转30deg，从后面到前面，从隐藏到显示
+ */
+
+@keyframes leftHide {
+  0%{visibility: visible;transform: translateZ(0)}
+  50%{transform: translateX(-40%) rotateY(30deg) scale(.8)}
+  100%{visibility: hidden;transform: translateZ(-200px);}
+}
+
+@keyframes rightShow {
+  0%{visibility: hidden;transform: translateZ(-200px);}
+  50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
+  100%{visibility: visible;transform: translateZ(0)}
+}
+
+@keyframes leftShow {
+  0%{visibility: hidden;transform: translateZ(-200px);}
+  50%{transform: translateX(-40%) rotateY(30deg) scale(.8)}
+  100%{visibility: visible;transform: translateZ(0)}
+}
+
+@keyframes rightHide {
+  0%{visibility: visible;transform: translateZ(0)}
+  50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
+  100%{visibility: hidden;transform: translateZ(-200px);}
 }

@@ -3,9 +3,11 @@
  */
 //引入主要js
 import main from './main';
+import first from  './firstView'
 
 //引入主要less
 import less from '../less/index.less';
 
 
 main();
+first();
