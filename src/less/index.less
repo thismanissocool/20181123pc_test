@@ -7,10 +7,19 @@
   font-weight:bold;
   letter-spacing:-5px;
 }
-.commonText{
+.common-text{
   color:white;
   line-height:1.5;
   font-size:15px;
+}
+
+.clearfix{
+  zoom: 1;
+  &::after{
+    display: block;
+    content: '';
+    clear: both;
+  }
 }
 
 #wrap{
@@ -76,7 +85,7 @@
     left: 0;
     right: 0;
     overflow: hidden;
-    >ul{
+    .content-list{
       position: absolute;
       top: 0;
       height: 500%;
@@ -181,7 +190,6 @@
                 }
               }
             }
-
           }
           &.course{
             h2{
@@ -209,6 +217,7 @@
                   bottom: 0;
                   margin: auto;
                   transition: transform 2s;
+                  backface-visibility: hidden;
                 }
                 p{
                   position: absolute;
@@ -217,7 +226,7 @@
                   width: 100%;
                   height: 100%;
                   box-sizing: border-box;
-                  background-color: #009ee0;
+                  //background-color: #009ee0;
                   padding: 15px;
                   transform: rotateY(180deg);
                   backface-visibility: hidden;
@@ -258,7 +267,221 @@
               }
             }
           }
+          &.works{
+            //文字标题
+            .works-title{
+              margin: 50px 0 100px 50px;
+            }
+            //图片列表
+            .works-list{
+              margin-left: 50px;
+              li{
+                position: relative;
+                float: left;
+                margin: 0 1px;
+                width: 220px;
+                height: 133px;
+                overflow: hidden;
+                &:last-child{
+                  width: 332px;
+                }
+                //遮罩层
+                .works-mask{
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: rgba(25,25,25,0.8);
+                  color: #fff;
+                  padding: 10px;
+                  box-sizing: border-box;
+                  opacity: 0;
+                  transition: opacity 1s;
+                  div{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    margin: auto;
+                    width: 32px;
+                    height: 34px;
+                    background-image: url("../images/zoomico.png");
+                    background-repeat: no-repeat;
+                    background-position: 0 0;
+                    transition: background-position 1s;
+                  }
+                }
+                //图片
+                img{
+                  transform: rotate(0) scale(1);
+                  transition: transform 1s;
+                }
+                &:hover{
+                  .works-mask{
+                    opacity: 1;
+                    div{
+                      background-position: 0 -35px;
+                    }
+                  }
+                  img{
+                    transform: rotate(25deg) scale(1.6);
+                  }
+                }
+              }
+            }
+            //机器人
+            .robot{
+              position: absolute;
+              left: 900px;
+              top: 170px;
+              width: 167px;
+              height: 191px;
+              background-image: url("../images/robot.png");
+              background-repeat: no-repeat;
+              animation: robot 4s linear infinite;
+            }
+          }
+          &.about{
+            //标题
+            .about-title{
+              margin: 50px 0 100px 50px;
+            }
+            //文本内容
+            .about-text{
+              width: 400px;
+              margin-left: 50px;
+            }
+            //图片列表
+            .about-list{
+              position: absolute;
+              width: 260px;
+              height: 200px;
+              border: 5px  solid rgba(255,255,255,0.5);
+              border-radius: 5px;
+              &:nth-of-type(1){
+                  left:750px;
+                  top:50px;
+                  li{
+                    background-image: url("../images/about2.jpg");
+                  }
+              }
+              &:nth-of-type(2){
+                left:600px;
+                top:290px;
+                li{
+                  background-image: url("../images/about4.jpg");
+                }
+              }
+              ul{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                li{
+                  float: left;
+                  width: 50%;
+                  height: 50%;
+                  transition: background-position 1s;
+                  background-repeat: no-repeat;
+                  &:nth-child(1){
+                    background-position: 0 0;
+                  }
+                  &:nth-child(2){
+                    background-position: -130px 0;
+                  }
+                  &:nth-child(3){
+                    background-position: 0 -100px;
+                  }
+                  &:nth-child(4){
+                    background-position: -130px -100px;
+                  }
+                }
+                &:hover{
+                  li{
+                    &:nth-child(1){
+                      background-position: 0 100px;
+                    }
+                    &:nth-child(2){
+                      background-position: -260px 0;
+                    }
+                    &:nth-child(3){
+                      background-position: 130px -100px;
+                    }
+                    &:nth-child(4){
+                      background-position: -130px -200px;
+                    }
+                  }
+                }
+              }
+            }
+            //背景线
+            .about-line{
+              width: 375px;
+              height: 998px;
+              background-image: url("../images/greenLine.png");
+              background-repeat: no-repeat;
+              position: absolute;
+              top: -20px;
+              right: 220px;
+              z-index: -5;
+            }
+          }
+          &.team{
+            .team-title{
+              float: left;
+              width: 400px;
+              margin: 50px;
+            }
+            .team-text{
+              float: right;
+              width: 400px;
+              margin: 50px;
+            }
+            .team-list{
+              position: absolute;
+              top: 230px;
+              left: 0;
+              right: 0;
+              margin: auto;
+              width: 994px;
+              height: 448px;
+              li{
+                float: right;
+                width: 236px;
+                height: 100%;
+                background-image: url("../images/team.png");
+                background-repeat: no-repeat;
+                &:nth-child(1){
+                  background-position: 3px 0;
+                }
+                &:nth-child(2){
+                  background-position: -230px 0;
+                }
+                &:nth-child(3){
+                  background-position: -483px 0;
+                }
+                &:nth-child(4){
+                  background-position: -710px 0;
+                }
+              }
+            }
+          }
         }
+      }
+    }
+    .menu-point{
+      position: fixed;
+      right: 10px;
+      top: 50%;
+      li{
+        width: 15px;
+        height: 15px;
+        border: 1px solid white;
+        border-radius: 50%;
+        margin-top: 10px;
       }
     }
   }
@@ -294,4 +517,12 @@
   0%{visibility: visible;transform: translateZ(0)}
   50%{transform: translateX(40%) rotateY(-30deg) scale(.8)}
   100%{visibility: hidden;transform: translateZ(-200px);}
+}
+
+//机器人运动动画
+@keyframes robot {
+  0%{transform: translateX(0)}
+  49%{transform: translateX(-400px)}
+  50%{transform: translateX(-400px) rotateY(180deg)}
+  100%{transform: rotateY(180deg) translateX(0)}
 }

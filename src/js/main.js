@@ -87,7 +87,7 @@ export default function () {
 
 //初始化小箭头
   arrowNode.style.left = navLiNodes[0].getBoundingClientRect().left + navLiNodes[0].offsetWidth / 2 - arrowHalfWidth + 'px';
-  // move(1);
+  move(4);
 //绑定窗口的缩放事件
   window.onresize = function () {
     arrowNode.style.left = navLiNodes[nowIndex].getBoundingClientRect().left + navLiNodes[nowIndex].offsetWidth / 2 - arrowHalfWidth + 'px';
