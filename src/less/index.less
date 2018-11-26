@@ -98,6 +98,7 @@
         width: 100%;
         height: 20%;
         background-repeat: no-repeat;
+        overflow: hidden;
         &:nth-child(1){
           background-image: url("../images/bg1.jpg");
         }
@@ -130,6 +131,7 @@
               height: 100%;
               transform-style: preserve-3d;
               perspective: 1000px;
+              transition: transform 1s, opacity 1s;
               li{
                 position: absolute;
                 width: 100%;
@@ -266,6 +268,36 @@
                 right: 525px;
               }
             }
+            .course-plane1{
+              width:359px;
+              height:283px;
+              background:url(../images/plane1.png) no-repeat;
+              position:absolute;
+              left:300px;
+              top:-100px;
+              transition:1s;
+              z-index: -1;
+            }
+            .course-plane2{
+              width:309px;
+              height:249px;
+              background:url(../images/plane2.png) no-repeat;
+              position:absolute;
+              left:-100px;
+              top:200px;
+              transition:1s;
+              z-index: -1;
+            }
+            .course-plane3{
+              width:230px;
+              height:182px;
+              background:url(../images/plane3.png) no-repeat;
+              position:absolute;
+              left:300px;
+              top:400px;
+              transition:1s;
+              z-index: -1;
+            }
           }
           &.works{
             //文字标题
@@ -342,6 +374,36 @@
               background-repeat: no-repeat;
               animation: robot 4s linear infinite;
             }
+            .works-pencel1{
+              width:180px;
+              height:97px;
+              background:url(../images/pencel1.png) no-repeat;
+              position:absolute;
+              transition:1s;
+              left:500px;
+              top:0;
+              z-index: -1;
+            }
+            .works-pencel2{
+              width:268px;
+              height:38px;
+              background:url(../images/pencel2.png) no-repeat;
+              position:absolute;
+              transition:1s;
+              left:300px;
+              top:250px;
+              z-index: -1;
+            }
+            .works-pencel3{
+              width:441px;
+              height:231px;
+              background:url(../images/pencel3.png) no-repeat;
+              position:absolute;
+              transition:1s;
+              left:650px;
+              top:300px;
+              z-index: -1;
+            }
           }
           &.about{
             //标题
@@ -360,6 +422,7 @@
               height: 200px;
               border: 5px  solid rgba(255,255,255,0.5);
               border-radius: 5px;
+              transition: transform 1s;
               &:nth-of-type(1){
                   left:750px;
                   top:50px;
@@ -434,11 +497,13 @@
               float: left;
               width: 400px;
               margin: 50px;
+              transition: 1s;
             }
             .team-text{
               float: right;
               width: 400px;
               margin: 50px;
+              transition: 1s;
             }
             .team-list{
               position: absolute;
@@ -449,7 +514,7 @@
               width: 994px;
               height: 448px;
               li{
-                float: right;
+                float: left;
                 width: 236px;
                 height: 100%;
                 background-image: url("../images/team.png");
@@ -482,7 +547,46 @@
         border: 1px solid white;
         border-radius: 50%;
         margin-top: 10px;
+        &.active{
+          background-color: #fff;
+        }
       }
+    }
+  }
+  #boot-animation{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    .up{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: #009ee0;
+      transition: height 2s;
+    }
+    .down{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background-color: #009ee0;
+      transition: height 2s;
+    }
+    .line{
+      position: absolute;
+      bottom: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 8px;
+      background-color: #fff;
+      transition: width 1s;
     }
   }
 }

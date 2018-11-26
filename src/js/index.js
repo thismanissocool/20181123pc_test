@@ -3,11 +3,13 @@
  */
 //引入主要js
 import main from './main';
-import first from  './firstView'
+// import firstView from  './firstView';
+import lastView from './lastView';
 
 //引入主要less
 import less from '../less/index.less';
 
 
 main();
-first();
+// firstView();
+lastView();

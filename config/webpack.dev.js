@@ -54,9 +54,9 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,   // 8kb以下的图片会做base64处理
-              publicPath: '../images',  //修改样式中url图片路径
+              publicPath: './images',  //修改样式中url图片路径
               outputPath: 'images',  //图片最终输入的路径
-              name: '[hash:10].[ext]'  //hash 文件哈希值（可以指定位数）  ext 文件扩展名
+              name: '[name].[ext]'  //hash 文件哈希值（可以指定位数）  ext 文件扩展名
             }
           }
         ]
@@ -71,7 +71,7 @@ module.exports = {
             options: {
               // 查询 jslint 配置项，请参考 http://www.jshint.com/docs/options/
               // 例如
-              camelcase: true,
+              camelcase: false,
               //jslint 的错误信息在默认情况下会显示为 warning（警告）类信息
               //将 emitErrors 参数设置为 true 可使错误显示为 error（错误）类信息
               emitErrors: false,
